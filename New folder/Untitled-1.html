@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alaska Intelligence - AI Consulting</title>
+    <style>
+        /* Modern CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Custom Properties */
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0f3460;
+            --text-color: #e1e1e1;
+            --gradient-1: #1a1a2e;
+            --gradient-2: #16213e;
+            --gradient-3: #0f3460;
+            --highlight-color: #e94560;
+            --card-bg: rgba(26, 26, 46, 0.95);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+            background-color: var(--primary-color);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            background: rgba(15, 15, 25, 0.95);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--highlight-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(-45deg, var(--gradient-1), var(--gradient-2), var(--gradient-3));
+            background-size: 400% 400%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease 0.2s;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            background: var(--secondary-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            padding: 2rem;
+            border-radius: 10px;
+            background: var(--card-bg);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            position: relative;
+            color: var(--text-color);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(233, 69, 96, 0.1));
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--highlight-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Solutions Section */
+        .solutions {
+            padding: 5rem 2rem;
+            background: var(--accent-color);
+        }
+
+        .solution-tabs {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tab-button {
+            padding: 1rem 2rem;
+            border: none;
+            background: var(--card-bg);
+            cursor: pointer;
+            border-radius: 5px;
+            transition: var(--transition);
+            color: var(--text-color);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tab-button.active {
+            background: var(--highlight-color);
+            border-color: var(--highlight-color);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: var(--secondary-color);
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-color);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        button {
+            background: var(--highlight-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+        }
+
+        button:hover::after {
+            transform: translateX(100%);
+            transition: var(--transition);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        .hero-subtitle {
+            color: var(--highlight-color);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.1s;
+        }
+
+        .hero-buttons {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.3s;
+        }
+
+        .hero-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .hero-btn.primary {
+            background: var(--highlight-color);
+            color: white;
+        }
+
+        .hero-btn.secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .section-header p {
+            color: var(--text-color);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .service-card h3 {
+            margin: 1rem 0;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .service-card .learn-more {
+            margin-top: 1.5rem;
+            color: var(--highlight-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .service-card .learn-more i {
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card .learn-more:hover i {
+            transform: translateX(5px);
+        }
+
+        .button-loader {
+            display: none;
+        }
+
+        button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .form-alert {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .form-alert.success {
+            background: rgba(46, 213, 115, 0.2);
+            border: 1px solid rgba(46, 213, 115, 0.3);
+            color: #2ed573;
+        }
+
+        .form-alert.error {
+            background: rgba(255, 71, 87, 0.2);
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            color: #ff4757;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">Welcome to the Future</p>
+            <h1>Alaska Intelligence</h1>
+            <p>Pioneering AI Solutions for Tomorrow's Challenges</p>
+            <div class="hero-buttons">
+                <button class="hero-btn primary">Get Started</button>
+                <button class="hero-btn secondary">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <p>Transforming businesses through cutting-edge AI solutions and expert consultation</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-brain"></i>
+                <h3>AI Strategy Consulting</h3>
+                <p>Develop comprehensive AI implementation strategies tailored to your business needs. Our expert consultants help you navigate the complex landscape of artificial intelligence.</p>
+                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-robot"></i>
+                <h3>Machine Learning Solutions</h3>
+                <p>Custom ML models and algorithms designed for your specific use cases. From predictive analytics to computer vision, we build solutions that drive results.</p>
+                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-chart-network"></i>
+                <h3>Data Analytics</h3>
+                <p>Transform your raw data into actionable insights using advanced AI techniques. Our data scientists help you uncover patterns and make data-driven decisions.</p>
+                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="solutions">
+        <div class="solution-tabs">
+            <div class="tab-buttons">
+                <button class="tab-button active">Enterprise AI</button>
+                <button class="tab-button">Predictive Analytics</button>
+                <button class="tab-button">Process Automation</button>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active">
+                    <h3>Enterprise AI Solutions</h3>
+                    <p>Comprehensive AI integration for large-scale organizations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>About Alaska Intelligence</h2>
+                <p>We are a leading AI consulting firm based in the last frontier, bringing cutting-edge artificial intelligence solutions to businesses worldwide. Our team of experts combines deep technical knowledge with strategic thinking to deliver transformative results.</p>
+            </div>
+            <div class="about-image">
+                <!-- Placeholder for about image -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-form">
+            <h2>Get in Touch</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Message" rows="5" required></textarea>
+                </div>
+                <button type="submit">
+                    <span class="button-text">Send Message</span>
+                    <span class="button-loader" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(15, 15, 25, 0.98)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.5)';
+            } else {
+                navbar.style.background = 'rgba(15, 15, 25, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        // Initialize EmailJS with your user ID
+        (function() {
+            emailjs.init("josh@alaskaintelligence.org"); // Replace with your EmailJS user ID
+        })();
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form elements
+            const form = this;
+            const button = form.querySelector('button');
+            const buttonText = button.querySelector('.button-text');
+            const buttonLoader = button.querySelector('.button-loader');
+            
+            // Remove any existing alerts
+            const existingAlert = form.querySelector('.form-alert');
+            if (existingAlert) {
+                existingAlert.remove();
+            }
+
+            // Disable button and show loader
+            button.disabled = true;
+            buttonText.style.display = 'none';
+            buttonLoader.style.display = 'inline-block';
+
+            // Get form data
+            const formData = {
+                name: form.querySelector('#name').value,
+                email: form.querySelector('#email').value,
+                message: form.querySelector('#message').value
+            };
+
+            // Send email using EmailJS
+            emailjs.send(
+                'service_7cnljjd', // Replace with your EmailJS service ID
+                'template_mjrfzk6', // Replace with your EmailJS template ID
+                formData
+            ).then(
+                function(response) {
+                    // Show success message
+                    const alert = document.createElement('div');
+                    alert.className = 'form-alert success';
+                    alert.textContent = 'Thank you for your message! We will get back to you soon.';
+                    form.appendChild(alert);
+                    
+                    // Reset form
+                    form.reset();
+                },
+                function(error) {
+                    // Show error message
+                    const alert = document.createElement('div');
+                    alert.className = 'form-alert error';
+                    alert.textContent = 'Oops! Something went wrong. Please try again later.';
+                    form.appendChild(alert);
+                }
+            ).finally(function() {
+                // Re-enable button and hide loader
+                button.disabled = false;
+                buttonText.style.display = 'inline-block';
+                buttonLoader.style.display = 'none';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('section').forEach((section) => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s ease-out';
+            observer.observe(section);
+        });
+
+        // Parallax effect for hero section
+        document.addEventListener('mousemove', (e) => {
+            const hero = document.querySelector('.hero-content');
+            const mouseX = e.clientX / window.innerWidth - 0.5;
+            const mouseY = e.clientY / window.innerHeight - 0.5;
+            
+            hero.style.transform = `translate(${mouseX * 20}px, ${mouseY * 20}px)`;
+        });
+
+        // Smooth reveal for service cards
+        const cards = document.querySelectorAll('.service-card');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+                card.style.transition = 'all 0.6s ease-out';
+            }, index * 200);
+        });
+    </script>
+</body>
+</html>

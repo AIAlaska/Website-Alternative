@@ -193,22 +193,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadContent() {
         for (const key in content) {
             if (content.hasOwnProperty(key)) {
-                // Handle arrays separately
-                if (Array.isArray(content[key])) {
-                    continue; // Skip arrays as they're handled separately
-                }
-                
                 const element = document.querySelector(`[data-content="${key}"]`);
                 if (element) {
-                    if (element.tagName === 'A' || element.tagName === 'BUTTON') {
-                        element.textContent = content[key];
-                    } else if (element.tagName === 'P' || element.tagName === 'H1' || element.tagName === 'H2') {
-                        element.textContent = content[key];
-                    } else if (element.tagName === 'LABEL') {
-                        element.textContent = content[key];
-                    }
-                } else {
-                    console.log(`Element not found for key: ${key}`); // Add debugging
+                   if (element.tagName === 'A' || element.tagName === 'BUTTON') {
+                     element.textContent = content[key]; //Set text for button or link
+                   } else if (element.tagName === 'P' || element.tagName === 'H1' || element.tagName === 'H2') {
+                       element.textContent = content[key]; // Set text content for paragraph or heading
+                   } else if (element.tagName === 'LABEL') {
+                         element.textContent = content[key]; //Set text for form label
+                   }
+
                 }
             }
         }
