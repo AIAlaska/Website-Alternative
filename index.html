@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alaska Intelligence</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Alaska Intelligence</h1>
+            <nav>
+                <ul id="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#solutions">Solutions</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div id="menu-icon">☰</div>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h2>AI Consulting for a Smarter Future</h2>
+            <p>We provide cutting-edge AI solutions to help your business thrive.</p>
+            <a href="#contact" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-grid">
+                <div class="service">
+                    <h3>AI Strategy Consulting</h3>
+                    <p>Developing tailored AI strategies to meet your business goals.</p>
+                </div>
+                <div class="service">
+                    <h3>Machine Learning Solutions</h3>
+                    <p>Implementing advanced machine learning models for predictive analytics.</p>
+                </div>
+                <div class="service">
+                    <h3>Data Analysis & Visualization</h3>
+                    <p>Transforming complex data into actionable insights.</p>
+                </div>
+                <div class="service">
+                    <h3>AI Integration</h3>
+                    <p>Seamlessly integrating AI into your existing systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions">
+        <div class="container">
+            <h2>Our Solutions</h2>
+            <div class="solution-grid">
+                <div class="solution">
+                    <h3>Predictive Maintenance</h3>
+                    <p>Using AI to predict equipment failures and reduce downtime.</p>
+                </div>
+                <div class="solution">
+                    <h3>Customer Behavior Analysis</h3>
+                    <p>Understanding customer behavior to improve engagement and sales.</p>
+                </div>
+                 <div class="solution">
+                    <h3>Fraud Detection</h3>
+                    <p>Implementing AI-powered systems to detect and prevent fraudulent activities.</p>
+                </div>
+                <div class="solution">
+                    <h3>Personalized Experiences</h3>
+                    <p>Creating personalized experiences for your customers using AI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <img src="assets/about-image.jpg" alt="About Us">
+            <div>
+                <h2>About Us</h2>
+                <p>Alaska Intelligence is a leading AI consulting agency dedicated to providing innovative solutions. Our team of experts is passionate about leveraging the power of AI to drive business success. We are committed to delivering high-quality, customized solutions that meet the unique needs of our clients.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Ready to transform your business with AI? Contact us today!</p>
+            <form>
+                <input type="text" placeholder="Your Name">
+                <input type="email" placeholder="Your Email">
+                <textarea placeholder="Your Message"></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Alaska Intelligence. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const navLinks = document.getElementById('nav-links');
+
+        menuIcon.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
